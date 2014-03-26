@@ -1,0 +1,26 @@
+{
+    "name": "talis/SRUClient-php",
+    "description": "This is a php client library for SRU (http://www.loc.gov/standards/sru/)",
+    "keywords": ["sru", "php", "client library"],
+    "homepage": "https://github.com/talis/SRUclient-php",
+    "type": "library",
+    "license": "MIT",
+    "authors":[
+        {
+            "name":"Ross Singer",
+            "email": "rxs@talis.com",
+            "homepage":"http://engineering.talis.com"
+        }
+    ],
+    "require":{
+        "php": ">=5.3.0",
+        "phpunit/phpunit": ">=3.7.0@stable",
+        "monolog/monolog": ">=1.5.0",
+        "guzzle/guzzle":"~3.7"
+    },
+    "autoload":{
+        "psr-0": {
+            "SRU": "src"
+        }
+    }
+}
