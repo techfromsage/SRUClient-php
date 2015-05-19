@@ -62,6 +62,10 @@ class Client
         {
             $this->defaultSRUVersion = $options['version'];
         }
+        if(isset($options['httpClient']) && $options['httpClient'] instanceof \Guzzle\Http\Client)
+        {
+            $this->httpClient = $options['httpClient'];
+        }
     }
 
     /**
@@ -137,7 +141,7 @@ class Client
     /**
      * Performs a scan operation and returns a ScanResponse object or a string is $raw is true
      *
-     * @param string $query The CQL query string
+     * @param $scanClause
      * @param array $options The query options ('version', 'maximumTerms', 'scanClause')
      * @param bool $raw If true, returns the response as a string
      * @return SearchRetrieveResponse|string
@@ -346,6 +350,14 @@ class Client
     public function setDefaultSRUVersion($defaultSRUVersion)
     {
         $this->defaultSRUVersion = $defaultSRUVersion;
+    }
+
+    /**
+     * @param \Guzzle\Http\Client $httpClient
+     */
+    public function setHttpClient(\Guzzle\Http\Client $httpClient)
+    {
+        $this->httpClient = $httpClient;
     }
 
 }
