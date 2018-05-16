@@ -57,7 +57,7 @@ class Record
         if(!$this->recordData) {
             $nodes = $this->xpath->query("./zs:recordData", $this->node);
             foreach($nodes as $node) {
-                $this->recordData = $node->firstChild;
+                $this->recordData = $node;
             }
         }
         if($raw && $this->packing() == "xml") {
