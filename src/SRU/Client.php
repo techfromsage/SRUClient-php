@@ -41,25 +41,22 @@ class Client
 
     /**
      * @param string $baseUrl The base URL of the SRU service
-     * @param array $options An array of options for the SRU service ('recordSchema', 'maximumRecords', 'httpMethod', 'version')
+     * @param array $options An array of options for the SRU service
+     *                       ('recordSchema', 'maximumRecords', 'httpMethod', 'version')
      */
-    function __construct($baseUrl, $options = array())
+    public function __construct($baseUrl, $options = [])
     {
         $this->baseUrl = $baseUrl;
-        if (isset($options['recordSchema']))
-        {
+        if (isset($options['recordSchema'])) {
             $this->defaultRecordSchema = $options['recordSchema'];
         }
-        if(isset($options['maximumRecords']))
-        {
+        if (isset($options['maximumRecords'])) {
             $this->defaultMaximumRecords = $options['maximumRecords'];
         }
-        if(isset($options['httpMethod']))
-        {
+        if (isset($options['httpMethod'])) {
             $this->defaultHttpMethod = $options['httpMethod'];
         }
-        if(isset($options['version']))
-        {
+        if (isset($options['version'])) {
             $this->defaultSRUVersion = $options['version'];
         }
     }
@@ -71,18 +68,17 @@ class Client
      */
     public function explain($raw = false)
     {
-        $explainResponse = $this->fetch(array("version" => $this->getDefaultSRUVersion(), "operation" => "explain"));
-        if ($raw == true)
-        {
+        $explainResponse = $this->fetch(
+            ['version' => $this->getDefaultSRUVersion(), 'operation' => 'explain']
+        );
+        if ($raw) {
             $explain = $explainResponse->getBody();
-        }
-        else
-        {
+        } else {
             $explain = new \DOMDocument();
             $explain->loadXML($explainResponse->getBody());
         }
 
-        return ($explain);
+        return $explain;
     }
 
     /**
@@ -93,9 +89,9 @@ class Client
      * @param bool $raw
      * @return SearchRetrieveResponse|string
      */
-    public function search($query, $options = array(), $raw = false)
+    public function search($query, $options = [], $raw = false)
     {
-        return ($this->searchRetrieve($query, $options, $raw));
+        return $this->searchRetrieve($query, $options, $raw);
     }
 
     /**
@@ -108,30 +104,29 @@ class Client
      */
     public function searchRetrieve($query, $options = array(), $raw = false)
     {
-        $options['operation'] = 'searchRetrieve';
-        $options["query"] = $query;
-        $options["version"] = isset($options['version']) ? $options['version'] : $this->getDefaultSRUVersion();
-        $options['maximumRecords'] = isset($options['maximumRecords']) ? $options['maximumRecords'] : $this->defaultMaximumRecords;
-        $options['startRecord'] = isset($options['startRecord']) ? $options['startRecord'] : 1;
-        if (isset($options['recordSchema']) || $this->defaultRecordSchema)
-        {
-            $options['recordSchema'] = isset($options['recordSchema']) ? $options['recordSchema'] : $this->defaultRecordSchema;
+        $defaultOptions = [
+            'version'        => $this->getDefaultSRUVersion(),
+            'maximumRecords' => $this->getDefaultMaximumRecords(),
+            'startRecord'    => 1,
+            'recordPacking'  => 'xml'
+        ];
+        if ($this->defaultRecordSchema) {
+            $defaultOptions['recordSchema'] = $this->defaultRecordSchema;
         }
-        $options['recordPacking'] = isset($options['recordPacking']) ? $options['recordPacking'] : "xml";
-        $searchRetrieveResponse = $this->fetch($options);
-        if ($raw == true)
-        {
+
+        $searchRetrieveResponse = $this->fetch(
+            array_merge($defaultOptions, $options, ['operation' => 'searchRetrieve', 'query' => $query])
+        );
+        if ($raw) {
             $searchRetrieve = $searchRetrieveResponse->getBody();
-        }
-        else
-        {
+        } else {
             $searchXML = new \DOMDocument();
             $searchXML->loadXML($searchRetrieveResponse->getBody());
 
             $searchRetrieve = new SearchRetrieveResponse($searchXML);
         }
 
-        return ($searchRetrieve);
+        return $searchRetrieve;
     }
 
     /**
@@ -142,23 +137,23 @@ class Client
      * @param bool $raw If true, returns the response as a string
      * @return SearchRetrieveResponse|string
      */
-    public function scan($scanClause, $options = array(), $raw = false)
+    public function scan($scanClause, $options = [], $raw = false)
     {
-        $options['operation'] = 'scan';
-        $options["scanClause"] = $scanClause;
-        $options["version"] = isset($options['version']) ? $options['version'] : $this->getDefaultSRUVersion();
-        $options['maximumTerms'] = isset($options['maximumTerms']) ? $options['maximumTerms'] : $this->defaultMaximumRecords;
+        $defaultOptions = [
+            'operation' => 'scan',
+            'version'   => $this->getDefaultSRUVersion(),
+            'maximumTerms' => $this->getDefaultMaximumRecords()
+        ];
 
-        $scanResponse = $this->fetch($options);
-        if ($raw == true)
-        {
+        $scanResponse = $this->fetch(
+            array_merge($defaultOptions, $options, ['operation' => 'scan', 'scanClause' => $scanClause])
+        );
+        if ($raw) {
             $scan = $scanResponse->getBody();
-        }
-        else
-        {
+        } else {
             $scan = new ScanResponse($scanResponse->getBody());
         }
-        return ($scan);
+        return $scan;
     }
 
     /**
@@ -169,21 +164,21 @@ class Client
     {
         $explain = $this->explain();
         $xpath = new \DOMXPath($explain);
-        $xpath->registerNamespace("zs", "http://www.loc.gov/zing/srw/");
-        $xpath->registerNamespace("ex", "http://explain.z3950.org/dtd/2.0/");
+        $xpath->registerNamespace('zs', 'http://www.loc.gov/zing/srw/');
+        $xpath->registerNamespace('ex', 'http://explain.z3950.org/dtd/2.0/');
 
-        $nodes = $xpath->query("/zs:explainResponse/zs:record/zs:recordData/ex:explain/ex:schemaInfo/ex:schema");
-        $schemas = array();
-        foreach ($nodes as $node)
-        {
-            $schemas[$node->getAttribute("name")] = array("identifier" => $node->getAttribute("identifier"));
-            $titleList = $node->getElementsByTagName("title");
-            foreach ($titleList as $title)
-            {
-                $schemas[$node->getAttribute("name")]["title"] = $title->nodeValue;
+        $nodes = $xpath->query(
+            '/zs:explainResponse/zs:record/zs:recordData/ex:explain/ex:schemaInfo/ex:schema'
+        );
+        $schemas = [];
+        foreach ($nodes as $node) {
+            $schemas[$node->getAttribute("name")] = ['identifier' => $node->getAttribute('identifier')];
+            $titleList = $node->getElementsByTagName('title');
+            foreach ($titleList as $title) {
+                $schemas[$node->getAttribute('name')]['title'] = $title->nodeValue;
             }
         }
-        return ($schemas);
+        return $schemas;
     }
 
     /**
@@ -194,22 +189,22 @@ class Client
     {
         $explain = $this->explain();
         $xpath = new \DOMXPath($explain);
-        $xpath->registerNamespace("zs", "http://www.loc.gov/zing/srw/");
-        $xpath->registerNamespace("ex", "http://explain.z3950.org/dtd/2.0/");
+        $xpath->registerNamespace('zs', 'http://www.loc.gov/zing/srw/');
+        $xpath->registerNamespace('ex', 'http://explain.z3950.org/dtd/2.0/');
 
-        $nodes = $xpath->query("/zs:explainResponse/zs:record/zs:recordData/ex:explain/ex:indexInfo/ex:index/ex:map/ex:name");
-        $indexes = array();
-        foreach ($nodes as $node)
-        {
-            $idx = array("set" => $node->getAttribute("set"), "name" => $node->nodeValue);
+        $nodes = $xpath->query(
+            '/zs:explainResponse/zs:record/zs:recordData/ex:explain/ex:indexInfo/ex:index/ex:map/ex:name'
+        );
+        $indexes = [];
+        foreach ($nodes as $node) {
+            $idx = ['set' => $node->getAttribute('set'), 'name' => $node->nodeValue];
             $nodeList = $node->parentNode->parentNode->getElementsByTagName('title');
-            foreach ($nodeList as $title)
-            {
+            foreach ($nodeList as $title) {
                 $idx['title'] = $title->nodeValue;
             }
-            $indexes[$node->getAttribute("set") . "." . $node->nodeValue] = $idx;
+            $indexes[$node->getAttribute('set') . '.' . $node->nodeValue] = $idx;
         }
-        return ($indexes);
+        return $indexes;
     }
 
     /**
@@ -218,25 +213,22 @@ class Client
      * @param array $options
      * @return \Guzzle\Http\Message\Response
      */
-    protected function fetch(array $args = NULL, array $options = array())
+    protected function fetch(array $args = null, array $options = [])
     {
         $client = $this->getHttpClient();
 
-        if($this->defaultHttpMethod == 'GET')
-        {
-            if(empty($args))
-            {
+        if ($this->defaultHttpMethod === 'GET') {
+            if (empty($args)) {
                 $url = $this->getBaseUrl();
             } else {
-                $url = $this->getBaseUrl() . "?" . http_build_query($args);
+                $url = $this->getBaseUrl() . '?' . http_build_query($args);
             }
 
             $request = $client->get($url, $args, $options);
             $response = $request->send();
 
             return $response;
-        } else
-        {
+        } else {
             $request = $client->post($this->getBaseUrl(), array(), $args, $options);
             $response = $request->send();
 
@@ -325,8 +317,7 @@ class Client
      */
     protected function getHttpClient()
     {
-        if (!$this->httpClient)
-        {
+        if (!$this->httpClient) {
             $this->httpClient = new \Guzzle\Http\Client();
         }
         return $this->httpClient;
@@ -347,7 +338,4 @@ class Client
     {
         $this->defaultSRUVersion = $defaultSRUVersion;
     }
-
 }
-
-?>
