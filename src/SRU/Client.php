@@ -102,7 +102,7 @@ class Client
      * @param bool $raw If true, returns the response as a string
      * @return SearchRetrieveResponse|string
      */
-    public function searchRetrieve($query, $options = array(), $raw = false)
+    public function searchRetrieve($query, $options = [], $raw = false)
     {
         $defaultOptions = [
             'version'        => $this->getDefaultSRUVersion(),
