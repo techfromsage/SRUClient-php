@@ -3,6 +3,8 @@ SRU Client for PHP
 
 A PHP Client library for [SRU](http://www.loc.gov/standards/sru/) servers.
 
+[![Build Status](https://travis-ci.org/talis/SRUClient-php.svg?branch=master)](https://travis-ci.org/talis/SRUClient-php)
+
 Usage
 -----
 
