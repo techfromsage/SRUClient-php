@@ -96,7 +96,7 @@ class Record
                     $doc->appendChild($recordData);
                     for ($i = 0; $i < $node->childNodes->length; $i++) {
                         $importNode = $doc->importNode($node->childNodes->item($i), true);
-                        $doc->recordData->appendChild($importNode);
+                        $doc->documentElement->appendChild($importNode);
                     }
                     $this->doc = $doc;
                     $this->recordData = $recordData;

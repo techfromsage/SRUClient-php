@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?><zs:searchRetrieveResponse xmlns:zs="http://www.loc.gov/zing/srw/"><zs:version>1.1</zs:version><RelevancySort>0</RelevancySort><zs:numberOfRecords>1</zs:numberOfRecords><zs:resultSetId>3089097_1</zs:resultSetId><zs:records><zs:record><zs:recordSchema>info:srw/schema/1/marcxml-v1.1</zs:recordSchema><zs:recordPacking>xml</zs:recordPacking><zs:recordData><leader>00953nam  2200289   4500</leader>
+<controlfield tag="001">DAW25472353</controlfield>
+<controlfield tag="008">121219s2013    enka     b    001 0 eng|d</controlfield>
+<datafield tag="020" ind1=" " ind2=" "><subfield code="a">9781137289254 (pbk.)</subfield>
+</datafield>
+<datafield tag="040" ind1=" " ind2=" "><subfield code="a">StDuBDS</subfield>
+<subfield code="b">eng</subfield>
+<subfield code="c">StDuBDS</subfield>
+<subfield code="d">DAWSON</subfield>
+</datafield>
+<datafield tag="050" ind1="0" ind2="4"><subfield code="a">LB2395 </subfield>
+<subfield code="b">.C68 2013</subfield>
+</datafield>
+<datafield tag="082" ind1="0" ind2="4"><subfield code="a">378.170281</subfield>
+<subfield code="2">23</subfield>
+</datafield>
+<datafield tag="100" ind1="1" ind2=" "><subfield code="a">Cottrell, Stella.</subfield>
+</datafield>
+<datafield tag="245" ind1="1" ind2="4"><subfield code="a">The study skills handbook /</subfield>
+<subfield code="c">Stella Cottrell.</subfield>
+</datafield>
+<datafield tag="250" ind1=" " ind2=" "><subfield code="a">4th ed.</subfield>
+</datafield>
+<datafield tag="260" ind1=" " ind2=" "><subfield code="a">Basingstoke :</subfield>
+<subfield code="b">Palgrave Macmillan,</subfield>
+<subfield code="c">2013.</subfield>
+</datafield>
+<datafield tag="300" ind1=" " ind2=" "><subfield code="a">426 p. :</subfield>
+<subfield code="b">ill. ;</subfield>
+<subfield code="c">25 cm.</subfield>
+</datafield>
+<datafield tag="490" ind1="1" ind2=" "><subfield code="a">Palgrave study skills</subfield>
+</datafield>
+<datafield tag="500" ind1=" " ind2=" "><subfield code="a">Previous ed.: 2008.</subfield>
+</datafield>
+<datafield tag="504" ind1=" " ind2=" "><subfield code="a">Includes bibliographical references and index.</subfield>
+</datafield>
+<datafield tag="650" ind1=" " ind2="0"><subfield code="a">Study skills.</subfield>
+<subfield code="v">Handbooks, manuals, etc.</subfield>
+</datafield>
+<datafield tag="830" ind1=" " ind2="0"><subfield code="a">Palgrave study skills.</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20130620</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">2994689</subfield>
+<subfield code="q">2994689</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20130620</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">2994697</subfield>
+<subfield code="q">2994697</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20130620</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">2994705</subfield>
+<subfield code="q">2994705</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20130620</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">2994713</subfield>
+<subfield code="q">2994713</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20130620</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">2994721</subfield>
+<subfield code="q">2994721</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20130620</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">2994739</subfield>
+<subfield code="q">2994739</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20130625</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3006145</subfield>
+<subfield code="q">3006145</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20130625</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3006152</subfield>
+<subfield code="q">3006152</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20130625</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3006160</subfield>
+<subfield code="q">3006160</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20130625</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3006178</subfield>
+<subfield code="q">3006178</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">4</subfield>
+<subfield code="x">20180924</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20140513</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3090446</subfield>
+<subfield code="q">3090446</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20150512</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3119484</subfield>
+<subfield code="q">3119484</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20150602</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3124716</subfield>
+<subfield code="q">3124716</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20150602</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3124724</subfield>
+<subfield code="q">3124724</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20150602</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3124732</subfield>
+<subfield code="q">3124732</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20150602</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3124740</subfield>
+<subfield code="q">3124740</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20150602</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3124757</subfield>
+<subfield code="q">3124757</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20160419</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3161049</subfield>
+<subfield code="q">3161049</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">4</subfield>
+<subfield code="x">20180924</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20160419</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3161056</subfield>
+<subfield code="q">3161056</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20160419</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3161064</subfield>
+<subfield code="q">3161064</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">4</subfield>
+<subfield code="x">20180924</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20160908</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3380409</subfield>
+<subfield code="q">3380409</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="c">MAINSTOCK</subfield>
+<subfield code="e">20160908</subfield>
+<subfield code="h">378.170281 COT</subfield>
+<subfield code="p">3380458</subfield>
+<subfield code="q">3380458</subfield>
+<subfield code="t">BOOK</subfield>
+<subfield code="y">0</subfield>
+</datafield>
+<datafield tag="852"><subfield code="a">LTAS</subfield>
+<subfield code="b">LIB</subfield>
+<subfield code="y">2</subfield>
+</datafield>
+<datafield tag="907" ind1=" " ind2=" "><subfield code="a">1:274533</subfield>
+</datafield>
+<datafield tag="931" ind1=" " ind2=" "><subfield code="a">Your essential companion for succeeding with your studies. Bestselling author Stella Cottrell equips you with the skills you need to improve your grades, build your confidence and plan for the future you want. Recognising that we each have a unique formula for success, her tried and trusted approach helps you find the key to unlock your potential.</subfield>
+</datafield>
+<datafield tag="932" ind1=" " ind2=" "><subfield code="a">THE ORIGINAL AND BEST - BY THE ¾ MILLION COPY BESTSELLING AUTHOR &lt;BR&gt;  &lt;BR&gt; If you are serious about succeeding with your studies,  &lt;EM&gt; The Study Skills Handbook &lt;/EM&gt;  is for you! Stella Cottrell has helped hundreds of thousands of students to make learning easier, faster and more enjoyable. Recognising that we all have our own unique formula for success, her tried and trusted approach allows you to find the key to unlock your potential and develop the skills you need to improve your grades, build your confidence and plan for the future you want. &lt;BR&gt;  &lt;BR&gt; This fully revised fourth edition features: &lt;BR&gt;  Chapters on all the core study skills - including research, critical thinking, academic writing, revision, team work and more &lt;BR&gt;  E-learning coverage throughout &lt;BR&gt;  Illustrations and a strong visual design - acting as memory joggers, reinforcing learning and making the book more accessible, fun and engaging &lt;BR&gt;  Lots of new material including brand new chapters on student success and time management  &lt;BR&gt;  &lt;BR&gt; No matter whether you have just left school or college, whether you are a mature, part-time or international student,  &lt;EM&gt; The Study Skills Handbook &lt;/EM&gt;  is your passport to success.  &lt;BR&gt; </subfield>
+</datafield>
+<datafield tag="933" ind1=" " ind2=" "><subfield code="a">Acknowledgements  &lt;BR&gt; Introducing  &lt;SPAN style=&quot;FONT-STYLE: italic&quot;&gt; The Study Skills Handbook &lt;/SPAN&gt;   &lt;BR&gt;  &lt;STRONG&gt; PART 1: MANAGING YOURSELF FOR STUDY  &lt;BR&gt;  &lt;/STRONG&gt; 1. Success as a Student  &lt;BR&gt; 2. Developing Your Skills  &lt;BR&gt; 3. Successful Study: Intelligence, Strategy and Personalised Learning  &lt;BR&gt; 4. The CREAM Strategy for Learning  &lt;BR&gt; 5. Time Management as a Student  &lt;BR&gt;  &lt;STRONG&gt; PART II: ACADEMIC SKILLS  &lt;BR&gt;  &lt;/STRONG&gt; 6. Core Research Skills: Reading, Note-Making and Managing Information  &lt;BR&gt; 7. Critical Analytical Thinking  &lt;BR&gt; 8. Memory  &lt;BR&gt; 9. Confidence with Numbers  &lt;BR&gt;  &lt;STRONG&gt; PART III: PEOPLE SKILLS  &lt;BR&gt;  &lt;/STRONG&gt; 10. Working with Others: Collaborative Study  &lt;BR&gt;  &lt;STRONG&gt; PART IV: TASK MANAGEMENT SKILLS  &lt;BR&gt;  &lt;/STRONG&gt; 11. Writing at University Level  &lt;BR&gt; 12. Developing Academic Writing  &lt;BR&gt; 13. Research Projects, Case Studies and Dissertations  &lt;BR&gt; 14. Revision and Exams  &lt;BR&gt;  &lt;STRONG&gt; PART V: DRAWING IT TOGETHER  &lt;BR&gt;  &lt;/STRONG&gt; 15. Planning Your Next Move  &lt;BR&gt; Appendix 1 Quick Multiplier  &lt;BR&gt; Appendix 2 Online Research Tools  &lt;BR&gt; Appendix 3 Further Resources on Managing and Studying as a Student  &lt;BR&gt; Glossary of Terms Useful to Know in Higher Education  &lt;BR&gt; Answers to Activities  &lt;BR&gt; References  &lt;BR&gt; Index</subfield>
+</datafield>
+<datafield tag="934" ind1=" " ind2=" "><subfield code="a">Stella Cottrell is Pro-Vice-Chancellor for Learning, Teaching and Student Engagement at the University of East London, UK. This position sees a return to the University of East London for Stella where she previously spent ten years working in educational development. Prior to her current position, Stella was Director for Lifelong Learning at the University of Leeds, UK.</subfield>
+</datafield>
+</zs:recordData><zs:recordPosition>1</zs:recordPosition></zs:record></zs:records></zs:searchRetrieveResponse>
