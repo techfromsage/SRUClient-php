@@ -25,23 +25,24 @@ class SearchRetrieveResponse
     protected $nextRecordPosition;
 
     /**
-     * @param string $xml
+     * @param string|\DOMDocument $xml SearchRetrieve XML response document
+     * @throws \InvalidArgumentException If $xml is not a string or DOMDocument
      */
-    function __construct($xml)
+    public function __construct($xml)
     {
-        if(is_string($xml))
-        {
+        if (is_string($xml)) {
             $this->doc = new \DOMDocument();
             $this->doc->loadXML($xml);
-        } elseif (is_a($xml, '\DOMDocument'))
-        {
+        } elseif (is_a($xml, '\DOMDocument')) {
             $this->doc = $xml;
         } else {
-            throw new \InvalidArgumentException('Argument must be an XML string or DOMDocument object');
+            throw new \InvalidArgumentException(
+                'Argument must be an XML string or DOMDocument object'
+            );
         }
 
         $this->xpath = new \DOMXPath($this->doc);
-        $this->xpath->registerNamespace("zs","http://www.loc.gov/zing/srw/");
+        $this->xpath->registerNamespace('zs', 'http://www.loc.gov/zing/srw/');
     }
 
     /**
@@ -49,13 +50,13 @@ class SearchRetrieveResponse
      */
     public function numberOfRecords()
     {
-        if(!$this->numberOfRecords) {
-            $nodes = $this->xpath->query("/zs:searchRetrieveResponse/zs:numberOfRecords");
-            foreach($nodes as $node) {
+        if (!$this->numberOfRecords) {
+            $nodes = $this->xpath->query('/zs:searchRetrieveResponse/zs:numberOfRecords');
+            foreach ($nodes as $node) {
                 $this->numberOfRecords = (int) $node->nodeValue;
             }
         }
-        return($this->numberOfRecords);
+        return $this->numberOfRecords;
     }
 
     /**
@@ -63,35 +64,37 @@ class SearchRetrieveResponse
      */
     public function nextRecordPosition()
     {
-        if(!$this->nextRecordPosition) {
-            $nodes = $this->xpath->query("/zs:searchRetrieveResponse/zs:nextRecordPosition");
-            foreach($nodes as $node) {
+        if (!$this->nextRecordPosition) {
+            $nodes = $this->xpath->query('/zs:searchRetrieveResponse/zs:nextRecordPosition');
+            foreach ($nodes as $node) {
                 $this->nextRecordPosition = (int) $node->nodeValue;
             }
         }
-        return($this->nextRecordPosition);
+        return $this->nextRecordPosition;
     }
 
     /**
      * @return Record[]
      */
-    public  function getRecords()
+    public function getRecords()
     {
-        if(!$this->records)
-        {
+        if (!$this->records) {
             $this->addRecords();
         }
-        return($this->records);
+        return $this->records;
     }
 
+    /**
+     * Parses the document and adds the records from the record elements
+     *
+     * @return void
+     */
     protected function addRecords()
     {
-
-        $this->records = array();
-        $nodes = $this->xpath->query("/zs:searchRetrieveResponse/zs:records/zs:record");
-        foreach($nodes as $node) {
+        $this->records = [];
+        $nodes = $this->xpath->query('/zs:searchRetrieveResponse/zs:records/zs:record');
+        foreach ($nodes as $node) {
             array_push($this->records, new Record($this->doc, $node));
         }
     }
 }
-?>
