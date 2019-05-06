@@ -1,5 +1,5 @@
 {
-    "name": "talis/SRUClient-php",
+    "name": "talis/sruclient-php",
     "description": "This is a php client library for SRU (http://www.loc.gov/standards/sru/)",
     "keywords": ["sru", "php", "client library"],
     "homepage": "https://github.com/talis/SRUclient-php",
