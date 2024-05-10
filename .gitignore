@@ -1,6 +1,7 @@
-
+.vscode/
 .idea/
 atlassian-ide-plugin.xml
 vendor/
 composer.phar
 composer.lock
+*-junit.xml
