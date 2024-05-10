@@ -36,4 +36,7 @@ workflows:
           matrix:
             parameters:
               php_version:
-                - 7.4
+                - '7.3'
+                - '7.4'
+                - '8.0'
+                - '8.3'

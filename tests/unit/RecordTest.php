@@ -24,7 +24,7 @@ class RecordTest extends TestCase
             );
             $rawData = $record->data(true);
             $this->assertTrue(is_string($rawData));
-            $this->assertContains(
+            $this->assertStringContainsString(
                 '<srw_dc:dc xmlns:srw_dc="info:srw/schema/1/dc-schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:srw/schema/1/dc-schema http://www.loc.gov/standards/sru/resources/dc-schema.xsd">',
                 $rawData
             );
@@ -43,14 +43,14 @@ class RecordTest extends TestCase
             $this->assertEquals($i + 1, $record->position());
             $data = $record->data();
             $this->assertInstanceOf('\DOMText', $data);
-            $this->assertContains(
+            $this->assertStringContainsString(
                 '<srw_dc:dc xmlns:srw_dc="info:srw/schema/1/dc-schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:srw/schema/1/dc-schema http://www.loc.gov/standards/sru/resources/dc-schema.xsd">',
                 $data->wholeText
             );
 
             $rawData = $record->data(true);
             $this->assertTrue(is_string($rawData));
-            $this->assertContains(
+            $this->assertStringContainsString(
                 '<srw_dc:dc xmlns:srw_dc="info:srw/schema/1/dc-schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="info:srw/schema/1/dc-schema http://www.loc.gov/standards/sru/resources/dc-schema.xsd">',
                 $rawData
             );
@@ -77,7 +77,7 @@ class RecordTest extends TestCase
             $this->assertTrue($data->isDefaultNamespace('http://www.loc.gov/MARC21/slim'));
             $rawData = $record->data(true);
             $this->assertTrue(is_string($rawData));
-            $this->assertContains(
+            $this->assertStringContainsString(
                 '<record xmlns="http://www.loc.gov/MARC21/slim">',
                 $rawData
             );
@@ -110,7 +110,7 @@ class RecordTest extends TestCase
         $this->assertFalse($data->isDefaultNamespace('http://www.loc.gov/MARC21/slim'));
         $rawData = $record->data(true);
         $this->assertTrue(is_string($rawData));
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<recordData><leader>00953nam  2200289   4500</leader>',
             $rawData
         );
