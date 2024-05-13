@@ -1,6 +1,8 @@
-
+.vscode/
 .idea/
 atlassian-ide-plugin.xml
 vendor/
+.phpunit.result.cache
 composer.phar
 composer.lock
+*-junit.xml

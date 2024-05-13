@@ -98,7 +98,8 @@ class Client
      * Performs a searchRetrieve operation and returns a SearchRetrieveResponse object or a string is $raw is true
      *
      * @param string $query The CQL query string
-     * @param array $options The query options ('version', 'maximumRecords', 'startRecord', 'recordSchema', 'recordPacking')
+     * @param array $options The query options
+     *                       ('version', 'maximumRecords', 'startRecord', 'recordSchema', 'recordPacking')
      * @param bool $raw If true, returns the response as a string
      * @return SearchRetrieveResponse|string
      */

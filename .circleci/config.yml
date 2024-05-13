@@ -1,0 +1,42 @@
+version: 2.1
+
+jobs:
+  lint:
+    docker:
+      - image: cimg/php:7.4
+    steps:
+      - checkout
+      - run: composer install
+      - run: composer lint -- --report=full --report-junit=php_codesniffer-junit.xml
+      - store_test_results:
+          path: php_codesniffer-junit.xml
+      - store_artifacts:
+          path: php_codesniffer-junit.xml
+
+  test:
+    parameters:
+      php_version:
+        type: string
+    docker:
+      - image: cimg/php:<< parameters.php_version >>
+    steps:
+      - checkout
+      - run: composer install
+      - run: composer test -- --log-junit phpunit-junit.xml
+      - store_test_results:
+          path: phpunit-junit.xml
+      - store_artifacts:
+          path: phpunit-junit.xml
+
+workflows:
+  build_and_test:
+    jobs:
+      - lint
+      - test:
+          matrix:
+            parameters:
+              php_version:
+                - '7.3'
+                - '7.4'
+                - '8.0'
+                - '8.3'
