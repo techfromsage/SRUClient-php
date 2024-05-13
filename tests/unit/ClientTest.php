@@ -7,13 +7,21 @@ use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
 {
+    /** @var string */
+    static protected $httpbinHost;
+
+    public static function setUpBeforeClass(): void
+    {
+        self::$httpbinHost = getenv('HTTPBIN_HOST') ?: 'https://httpbin.org';
+    }
+
     /**
      * @dataProvider explainDataProvider
      */
     public function testExplain(string $method, array $defaults = [])
     {
         $clientOptions = $defaults + ['httpMethod' => $method];
-        $client = new Client($this->baseUrl($method), $clientOptions);
+        $client = new Client(self::$httpbinHost . '/anything', $clientOptions);
 
         $response = $client->explain(true);
 
@@ -24,6 +32,7 @@ class ClientTest extends TestCase
         $data = json_decode($response, true);
         $responseKey = $method === 'POST' ? 'form' : 'args';
 
+        $this->assertEquals($method, $data['method']);
         $this->assertEquals($expectedArgs, $data[$responseKey]);
     }
 
@@ -40,7 +49,7 @@ class ClientTest extends TestCase
     public function testSearchRetrieve(string $method, array $defaults = [], array $options = [])
     {
         $clientOptions = $defaults + ['httpMethod' => $method];
-        $client = new Client($this->baseUrl($method), $clientOptions);
+        $client = new Client(self::$httpbinHost . '/anything', $clientOptions);
 
         $response = $client->searchRetrieve('test', $options, true);
 
@@ -55,6 +64,7 @@ class ClientTest extends TestCase
         $data = json_decode($response, true);
         $responseKey = $method === 'POST' ? 'form' : 'args';
 
+        $this->assertEquals($method, $data['method']);
         $this->assertEquals($expectedArgs, $data[$responseKey]);
     }
 
@@ -74,7 +84,7 @@ class ClientTest extends TestCase
     public function testScan(string $method, array $defaults = [], array $options = [])
     {
         $clientOptions = $defaults + ['httpMethod' => $method];
-        $client = new Client($this->baseUrl($method), $clientOptions);
+        $client = new Client(self::$httpbinHost . '/anything', $clientOptions);
 
         $response = $client->scan('test', $options, true);
 
@@ -91,6 +101,7 @@ class ClientTest extends TestCase
         $data = json_decode($response, true);
         $responseKey = $method === 'POST' ? 'form' : 'args';
 
+        $this->assertEquals($method, $data['method']);
         $this->assertEquals($expectedArgs, $data[$responseKey]);
     }
 
@@ -101,14 +112,5 @@ class ClientTest extends TestCase
         yield 'Override default version' => ['GET', ['version' => '2.0']];
         yield 'Override default maximumTerms' => ['GET', ['maximumRecords' => '42']];
         yield 'Call options' => ['GET', ['version' => '2.0'], ['version' => '3.0', 'responsePosition' => 5]];
-    }
-
-    private function baseUrl(string $endpoint): string
-    {
-        $host = getenv('HTTPBIN_HOST');
-        if (!$host) {
-            $host = 'https://httpbin.org';
-        }
-        return $host . '/' . strtolower($endpoint);
     }
 }
