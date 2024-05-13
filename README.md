@@ -1,14 +1,10 @@
-SRU Client for PHP
-==================
+# SRU Client for PHP
 
 A PHP Client library for [SRU](http://www.loc.gov/standards/sru/) servers.
 
-[![Build Status](https://travis-ci.org/talis/SRUClient-php.svg?branch=master)](https://travis-ci.org/talis/SRUClient-php)
+## Usage
 
-Usage
------
-
-```
+```php
 $client = new \SRU\Client('http://lx2.loc.gov:210/LCDB', ['recordSchema' => 'marcxml']);
 
 $response = $client->searchRetrieve('dinosaur', ['maximumRecords' => 5]);
@@ -29,7 +25,8 @@ get_class($record->getData());
 > DOMElement // <-- MARC record structure here
 
 echo $record->getData(true); // Returns a string representation of the data
-
+```
+```xml
 <record xmlns="http://www.loc.gov/MARC21/slim">
   <leader>01392cjm a2200325 a 4500</leader>
   <controlfield tag="001">18919847</controlfield>
@@ -121,4 +118,24 @@ echo $record->getData(true); // Returns a string representation of the data
     <subfield code="a">Musikexpress.</subfield>
   </datafield>
 </record>
+```
+
+## Testing
+
+Tests are written in PHPUnit and can be ran like so:
+
+```sh
+composer test
+# Or
+vendor/bin/phpunit
+```
+
+Additionally, there are some tests for the HTTP client wrapper, which check that requests are sent correctly by hitting [httpbin.org](https://httpbin.org/).
+You may override `HTTPBIN_HOST` variable to make them hit locally running service:
+
+```sh
+# run httpbin container and expose on port 8080
+docker run -p 8080:80 kennethreitz/httpbin
+# run tests pointing to your local httpbin
+HTTPBIN_HOST=http://localhost:8080 composer test
 ```
