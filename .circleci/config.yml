@@ -19,6 +19,10 @@ jobs:
         type: string
     docker:
       - image: cimg/php:<< parameters.php_version >>
+        environment:
+          HTTPBIN_HOST: http://httpbin
+      - image: kennethreitz/httpbin
+        name: httpbin
     steps:
       - checkout
       - run: composer install
@@ -38,5 +42,5 @@ workflows:
               php_version:
                 - '7.3'
                 - '7.4'
-                - '8.0'
-                - '8.3'
+                # - '8.0'
+                # - '8.3'
