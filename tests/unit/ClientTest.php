@@ -2,8 +2,10 @@
 
 namespace SRU\tests;
 
-use SRU\Client;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
 use PHPUnit\Framework\TestCase;
+use SRU\Client;
 
 class ClientTest extends TestCase
 {
@@ -112,5 +114,45 @@ class ClientTest extends TestCase
         yield 'Override default version' => ['GET', ['version' => '2.0']];
         yield 'Override default maximumTerms' => ['GET', ['maximumRecords' => '42']];
         yield 'Call options' => ['GET', ['version' => '2.0'], ['version' => '3.0', 'responsePosition' => 5]];
+    }
+
+    /**
+     * @dataProvider clientErrorStatusProvider
+     */
+    public function testThrowsClientException(int $status)
+    {
+        $this->expectException(ClientException::class);
+        $this->expectExceptionCode($status);
+
+        $client = new Client(self::$httpbinHost . '/status/' . $status);
+        $client->explain(true);
+    }
+
+    public function clientErrorStatusProvider(): iterable
+    {
+        yield 'Bad Request' => [400];
+        yield 'Unauthorized' => [401];
+        yield 'Forbidden' => [403];
+        yield 'Not Found' => [404];
+    }
+
+    /**
+     * @dataProvider serverErrorStatusProvider
+     */
+    public function testThrowsServerException(int $status)
+    {
+        $this->expectException(ServerException::class);
+        $this->expectExceptionCode($status);
+
+        $client = new Client(self::$httpbinHost . '/status/' . $status);
+        $client->explain(true);
+    }
+
+    public function serverErrorStatusProvider(): iterable
+    {
+        yield 'Internal Server Error' => [500];
+        yield 'Bad Gateway' => [502];
+        yield 'Service Unavailable' => [503];
+        yield 'Gateway Timeout' => [504];
     }
 }
