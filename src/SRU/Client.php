@@ -2,6 +2,8 @@
 
 namespace SRU;
 
+use GuzzleHttp\RequestOptions;
+
 class Client
 {
     /**
@@ -35,7 +37,7 @@ class Client
     private $defaultSRUVersion = "1.1";
 
     /**
-     * @var \Guzzle\Http\Client
+     * @var \GuzzleHttp\Client
      */
     private $httpClient;
 
@@ -71,12 +73,13 @@ class Client
         $explainResponse = $this->fetch(
             ['version' => $this->getDefaultSRUVersion(), 'operation' => 'explain']
         );
+        $body = (string) $explainResponse->getBody();
         if ($raw) {
-            $explain = $explainResponse->getBody();
-        } else {
-            $explain = new \DOMDocument();
-            $explain->loadXML($explainResponse->getBody());
+            return $body;
         }
+
+        $explain = new \DOMDocument();
+        $explain->loadXML($body);
 
         return $explain;
     }
@@ -118,14 +121,15 @@ class Client
         $searchRetrieveResponse = $this->fetch(
             array_merge($defaultOptions, $options, ['operation' => 'searchRetrieve', 'query' => $query])
         );
+        $body = (string) $searchRetrieveResponse->getBody();
         if ($raw) {
-            $searchRetrieve = $searchRetrieveResponse->getBody();
-        } else {
-            $searchXML = new \DOMDocument();
-            $searchXML->loadXML($searchRetrieveResponse->getBody());
-
-            $searchRetrieve = new SearchRetrieveResponse($searchXML);
+            return $body;
         }
+
+        $searchXML = new \DOMDocument();
+        $searchXML->loadXML($body);
+
+        $searchRetrieve = new SearchRetrieveResponse($searchXML);
 
         return $searchRetrieve;
     }
@@ -149,11 +153,12 @@ class Client
         $scanResponse = $this->fetch(
             array_merge($defaultOptions, $options, ['operation' => 'scan', 'scanClause' => $scanClause])
         );
+        $body = (string) $scanResponse->getBody();
         if ($raw) {
-            $scan = $scanResponse->getBody();
-        } else {
-            $scan = new ScanResponse($scanResponse->getBody());
+            return $body;
         }
+
+        $scan = new ScanResponse($body);
         return $scan;
     }
 
@@ -211,10 +216,9 @@ class Client
     /**
      * Performs the HTTP request based on the defined request method
      * @param array $args
-     * @param array $options
-     * @return \Guzzle\Http\Message\Response
+     * @return \Psr\Http\Message\ResponseInterface
      */
-    protected function fetch(array $args = null, array $options = [])
+    protected function fetch(array $args = [])
     {
         $client = $this->getHttpClient();
 
@@ -225,16 +229,12 @@ class Client
                 $url = $this->getBaseUrl() . '?' . http_build_query($args);
             }
 
-            $request = $client->get($url, $args, $options);
-            $response = $request->send();
-
-            return $response;
-        } else {
-            $request = $client->post($this->getBaseUrl(), array(), $args, $options);
-            $response = $request->send();
-
-            return $response;
+            return $client->get($url);
         }
+
+        return $client->post($this->getBaseUrl(), [
+            RequestOptions::FORM_PARAMS => $args,
+        ]);
     }
 
     /**
@@ -314,12 +314,12 @@ class Client
 
     /**
      * Lazy loader for the GuzzleClient
-     * @return \Guzzle\Http\Client
+     * @return \GuzzleHttp\Client
      */
     protected function getHttpClient()
     {
         if (!$this->httpClient) {
-            $this->httpClient = new \Guzzle\Http\Client();
+            $this->httpClient = new \GuzzleHttp\Client();
         }
         return $this->httpClient;
     }

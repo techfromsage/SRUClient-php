@@ -5,24 +5,23 @@
     "homepage": "https://github.com/talis/SRUclient-php",
     "type": "library",
     "license": "MIT",
-    "authors":[
+    "authors": [
         {
-            "name":"Ross Singer",
+            "name": "Ross Singer",
             "email": "rxs@talis.com",
-            "homepage":"http://engineering.talis.com"
+            "homepage": "http://engineering.talis.com"
         }
     ],
-    "require":{
+    "require": {
         "php": ">=7.3",
-        "monolog/monolog": ">=1.5.0",
-        "guzzle/guzzle":"~3.7"
+        "guzzlehttp/guzzle": "^6.5.8 || ^7.4.5"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "3.*",
         "phpunit/phpunit": "^8.5.38",
         "pear/file_marc": "1.1.2"
     },
-    "autoload":{
+    "autoload": {
         "psr-4": {
             "SRU\\": "src/SRU/"
         }
